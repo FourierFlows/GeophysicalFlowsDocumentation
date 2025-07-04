@@ -23,6 +23,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: gh-pages
+          fetch-depth: 0
       - name: Delete preview and history + push changes
         run: |
           git config user.name "Documenter.jl"
