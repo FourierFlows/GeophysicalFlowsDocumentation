@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Decaying barotropic QG beta-plane turbulence · GeophysicalFlows.jl</title><meta name="title" content="Decaying barotropic QG beta-plane turbulence · GeophysicalFlows.jl"/><meta property="og:title" content="Decaying barotropic QG beta-plane turbulence · GeophysicalFlows.jl"/><meta property="twitter:title" content="Decaying barotropic QG beta-plane turbulence · GeophysicalFlows.jl"/><meta name="description" content="Documentation for GeophysicalFlows.jl."/><meta property="og:description" content="Documentation for GeophysicalFlows.jl."/><meta property="twitter:description" content="Documentation for GeophysicalFlows.jl."/><meta property="og:url" content="https://fourierflows.github.io/GeophysicalFlowsDocumentation/stable/literated/singlelayerqg_betadecay/"/><meta property="twitter:url" content="https://fourierflows.github.io/GeophysicalFlowsDocumentation/stable/literated/singlelayerqg_betadecay/"/><link rel="canonical" href="https://fourierflows.github.io/GeophysicalFlowsDocumentation/stable/literated/singlelayerqg_betadecay/"/><script data-outdated-warner src="../../assets/warner.js"></script><link href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.050/juliamono.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="../../assets/documenter.js"></script><script src="../../search_index.js"></script><script src="../../siteinfo.js"></script><script src="../../../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="../../assets/themeswap.js"></script></head><body><div id="documenter"><nav class="docs-sidebar"><div class="docs-package-name"><span class="docs-autofit"><a href="../../">GeophysicalFlows.jl</a></span></div><button class="docs-search-query input is-rounded is-small is-clickable my-2 mx-auto py-1 px-2" id="documenter-search-query">Search docs (Ctrl + /)</button><ul class="docs-menu"><li><a class="tocitem" href="../../">Home</a></li><li><a class="tocitem" href="../../installation_instructions/">Installation instructions</a></li><li><a class="tocitem" href="../../aliasing/">Aliasing</a></li><li><a class="tocitem" href="../../gpu/">GPU</a></li><li><a class="tocitem" href="../../visualize/">Visualize output</a></li><li><span class="tocitem">Examples</span><ul><li><input class="collapse-toggle" id="menuitem-6-1" type="checkbox"/><label class="tocitem" for="menuitem-6-1"><span class="docs-label">TwoDNavierStokes</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../twodnavierstokes_decaying/">2D decaying turbulence</a></li><li><a class="tocitem" href="../twodnavierstokes_stochasticforcing/">2D forced-dissipative turbulence</a></li><li><a class="tocitem" href="../twodnavierstokes_stochasticforcing_budgets/">2D forced-dissipative turbulence budgets</a></li></ul></li><li><input class="collapse-toggle" id="menuitem-6-2" type="checkbox" checked/><label class="tocitem" for="menuitem-6-2"><span class="docs-label">SingleLayerQG</span><i class="docs-chevron"></i></label><ul class="collapsed"><li class="is-active"><a class="tocitem" href>Decaying barotropic QG beta-plane turbulence</a><ul class="internal"><li><a class="tocitem" href="#Install-dependencies"><span>Install dependencies</span></a></li><li><a class="tocitem" href="#Let&#39;s-begin"><span>Let&#39;s begin</span></a></li><li><a class="tocitem" href="#Choosing-a-device:-CPU-or-GPU"><span>Choosing a device: CPU or GPU</span></a></li><li><a class="tocitem" href="#Numerical-parameters-and-time-stepping-parameters"><span>Numerical parameters and time-stepping parameters</span></a></li><li><a class="tocitem" href="#Physical-parameters"><span>Physical parameters</span></a></li><li><a class="tocitem" href="#Problem-setup"><span>Problem setup</span></a></li><li><a class="tocitem" href="#Setting-initial-conditions"><span>Setting initial conditions</span></a></li><li><a class="tocitem" href="#Diagnostics"><span>Diagnostics</span></a></li><li><a class="tocitem" href="#Output"><span>Output</span></a></li><li><a class="tocitem" href="#Visualizing-the-simulation"><span>Visualizing the simulation</span></a></li><li><a class="tocitem" href="#Time-stepping-the-Problem-forward"><span>Time-stepping the <code>Problem</code> forward</span></a></li><li><a class="tocitem" href="#Save"><span>Save</span></a></li></ul></li><li><a class="tocitem" href="../singlelayerqg_betaforced/">Forced-dissipative barotropic QG beta-plane turbulence</a></li><li><a class="tocitem" href="../singlelayerqg_decaying_topography/">Decaying barotropic QG turbulence over topography</a></li><li><a class="tocitem" href="../singlelayerqg_decaying_barotropic_equivalentbarotropic/">SingleLayerQG decaying 2D turbulence with and without finite Rossby radius of deformation</a></li></ul></li><li><input class="collapse-toggle" id="menuitem-6-3" type="checkbox"/><label class="tocitem" for="menuitem-6-3"><span class="docs-label">BarotropicQGQL</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../barotropicqgql_betaforced/">Quasi-Linear forced-dissipative barotropic QG beta-plane turbulence</a></li></ul></li><li><input class="collapse-toggle" id="menuitem-6-4" type="checkbox"/><label class="tocitem" for="menuitem-6-4"><span class="docs-label">MultiLayerQG</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../multilayerqg_2layer/">Phillips model of Baroclinic Instability</a></li></ul></li><li><input class="collapse-toggle" id="menuitem-6-5" type="checkbox"/><label class="tocitem" for="menuitem-6-5"><span class="docs-label">SurfaceQG</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../surfaceqg_decaying/">Decaying Surface QG turbulence</a></li></ul></li></ul></li><li><span class="tocitem">Modules</span><ul><li><a class="tocitem" href="../../modules/twodnavierstokes/">TwoDNavierStokes</a></li><li><a class="tocitem" href="../../modules/singlelayerqg/">SingleLayerQG</a></li><li><a class="tocitem" href="../../modules/barotropicqgql/">BarotropicQGQL</a></li><li><a class="tocitem" href="../../modules/multilayerqg/">MultiLayerQG</a></li><li><a class="tocitem" href="../../modules/surfaceqg/">SurfaceQG</a></li></ul></li><li><a class="tocitem" href="../../stochastic_forcing/">Stochastic forcing</a></li><li><a class="tocitem" href="../../contributing/">Contributor&#39;s guide</a></li><li><a class="tocitem" href="../../references/">References</a></li><li><span class="tocitem">Library</span><ul><li><a class="tocitem" href="../../lib/types/">Private types</a></li><li><a class="tocitem" href="../../lib/functions/">Functions</a></li></ul></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><a class="docs-sidebar-button docs-navbar-link fa-solid fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a><nav class="breadcrumb"><ul class="is-hidden-mobile"><li><a class="is-disabled">Examples</a></li><li><a class="is-disabled">SingleLayerQG</a></li><li class="is-active"><a href>Decaying barotropic QG beta-plane turbulence</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href>Decaying barotropic QG beta-plane turbulence</a></li></ul></nav><div class="docs-right"><a class="docs-navbar-link" href="https://github.com/FourierFlows/GeophysicalFlows.jl" title="View the repository on GitHub"><span class="docs-icon fa-brands"></span><span class="docs-label is-hidden-touch">GitHub</span></a><a class="docs-navbar-link" href="https://github.com/FourierFlows/GeophysicalFlows.jl/blob/main/examples/singlelayerqg_betadecay.jl" title="Edit source on GitHub"><span class="docs-icon fa-solid"></span></a><a class="docs-settings-button docs-navbar-link fa-solid fa-gear" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-article-toggle-button fa-solid fa-chevron-up" id="documenter-article-toggle-button" href="javascript:;" title="Collapse all docstrings"></a></div></header><article class="content" id="documenter-page"><h1 id="singlelayerqg_betadecay_example"><a class="docs-heading-anchor" href="#singlelayerqg_betadecay_example">Decaying barotropic QG beta-plane turbulence</a><a id="singlelayerqg_betadecay_example-1"></a><a class="docs-heading-anchor-permalink" href="#singlelayerqg_betadecay_example" title="Permalink"></a></h1><p>An example of decaying barotropic quasi-geostrophic turbulence on a beta plane.</p><h2 id="Install-dependencies"><a class="docs-heading-anchor" href="#Install-dependencies">Install dependencies</a><a id="Install-dependencies-1"></a><a class="docs-heading-anchor-permalink" href="#Install-dependencies" title="Permalink"></a></h2><p>First let&#39;s make sure we have all required packages installed.</p><pre><code class="language-julia hljs">using Pkg
+pkg&quot;add GeophysicalFlows, CairoMakie, Printf, Statistics, Random&quot;</code></pre><h2 id="Let&#39;s-begin"><a class="docs-heading-anchor" href="#Let&#39;s-begin">Let&#39;s begin</a><a id="Let&#39;s-begin-1"></a><a class="docs-heading-anchor-permalink" href="#Let&#39;s-begin" title="Permalink"></a></h2><p>Let&#39;s load <code>GeophysicalFlows.jl</code> and some other packages we need.</p><pre><code class="language-julia hljs">using GeophysicalFlows, CairoMakie, Printf, Random
+
+using Statistics: mean</code></pre><h2 id="Choosing-a-device:-CPU-or-GPU"><a class="docs-heading-anchor" href="#Choosing-a-device:-CPU-or-GPU">Choosing a device: CPU or GPU</a><a id="Choosing-a-device:-CPU-or-GPU-1"></a><a class="docs-heading-anchor-permalink" href="#Choosing-a-device:-CPU-or-GPU" title="Permalink"></a></h2><pre><code class="language-julia hljs">dev = CPU()     # Device (CPU/GPU)</code></pre><h2 id="Numerical-parameters-and-time-stepping-parameters"><a class="docs-heading-anchor" href="#Numerical-parameters-and-time-stepping-parameters">Numerical parameters and time-stepping parameters</a><a id="Numerical-parameters-and-time-stepping-parameters-1"></a><a class="docs-heading-anchor-permalink" href="#Numerical-parameters-and-time-stepping-parameters" title="Permalink"></a></h2><pre><code class="language-julia hljs">      n = 128            # 2D resolution: n² grid points
+stepper = &quot;FilteredRK4&quot;  # timestepper
+     dt = 0.04           # timestep
+ nsteps = 2000           # total number of time-steps
+ nsubs  = 10             # number of time-steps for intermediate logging/plotting (nsteps must be multiple of nsubs)</code></pre><h2 id="Physical-parameters"><a class="docs-heading-anchor" href="#Physical-parameters">Physical parameters</a><a id="Physical-parameters-1"></a><a class="docs-heading-anchor-permalink" href="#Physical-parameters" title="Permalink"></a></h2><pre><code class="language-julia hljs">L = 2π        # domain size
+β = 10.0      # planetary PV gradient
+μ = 0.0       # bottom drag</code></pre><h2 id="Problem-setup"><a class="docs-heading-anchor" href="#Problem-setup">Problem setup</a><a id="Problem-setup-1"></a><a class="docs-heading-anchor-permalink" href="#Problem-setup" title="Permalink"></a></h2><p>We initialize a <code>Problem</code> by providing a set of keyword arguments. We use <code>stepper = &quot;FilteredRK4&quot;</code>. Filtered timesteppers apply a wavenumber-filter at every time-step that removes enstrophy at high wavenumbers and, thereby, stabilize the problem, despite that we use the default viscosity coefficient <code>ν=0</code>. Thus, we choose not to do any dealiasing by providing <code>aliased_fraction=0</code>.</p><pre><code class="language-julia hljs">prob = SingleLayerQG.Problem(dev; nx=n, Lx=L, β, μ, dt, stepper, aliased_fraction=0)</code></pre><p>and define some shortcuts</p><pre><code class="language-julia hljs">sol, clock, vars, params, grid = prob.sol, prob.clock, prob.vars, prob.params, prob.grid
+x, y = grid.x, grid.y</code></pre><h2 id="Setting-initial-conditions"><a class="docs-heading-anchor" href="#Setting-initial-conditions">Setting initial conditions</a><a id="Setting-initial-conditions-1"></a><a class="docs-heading-anchor-permalink" href="#Setting-initial-conditions" title="Permalink"></a></h2><p>Our initial condition consist of a flow that has power only at wavenumbers with <span>$6 &lt; \frac{L}{2\pi} \sqrt{k_x^2 + k_y^2} &lt; 10$</span> and initial energy <span>$E_0$</span>. <code>device_array()</code> function returns the array type appropriate for the device, i.e., <code>Array</code> for <code>dev = CPU()</code> and <code>CuArray</code> for <code>dev = GPU()</code>.</p><pre><code class="language-julia hljs">E₀ = 0.08 # energy of initial condition
+
+K = @. sqrt(grid.Krsq)                          # a 2D array with the total wavenumber
+
+Random.seed!(1234)
+q₀h = device_array(dev)(randn(Complex{eltype(grid)}, size(sol)))
+@. q₀h = ifelse(K &lt; 6  * 2π/L, 0, q₀h)
+@. q₀h = ifelse(K &gt; 10 * 2π/L, 0, q₀h)
+@. q₀h[1, :] = 0    # remove any power from zonal wavenumber k=0
+q₀h *= sqrt(E₀ / SingleLayerQG.energy(q₀h, vars, params, grid)) # normalize q₀ to have energy E₀
+q₀ = irfft(q₀h, grid.nx)
+
+SingleLayerQG.set_q!(prob, q₀)</code></pre><p>Let&#39;s plot the initial vorticity and streamfunction. Note that when plotting, we decorate the variable to be plotted with <code>Array()</code> to make sure it is brought back on the CPU when <code>vars</code> live on the GPU.</p><pre><code class="language-julia hljs">fig = Figure(resolution = (800, 360))
+
+axq = Axis(fig[1, 1];
+           xlabel = &quot;x&quot;,
+           ylabel = &quot;y&quot;,
+           title = &quot;initial vorticity ∂v/∂x-∂u/∂y&quot;,
+           aspect = 1,
+           limits = ((-grid.Lx/2, grid.Lx/2), (-grid.Ly/2, grid.Ly/2))
+           )
+
+axψ = Axis(fig[1, 2];
+           xlabel = &quot;x&quot;,
+           ylabel = &quot;y&quot;,
+           title = &quot;initial streamfunction ψ&quot;,
+           aspect = 1,
+           limits = ((-grid.Lx/2, grid.Lx/2), (-grid.Ly/2, grid.Ly/2))
+           )
+
+heatmap!(axq, x, y, Array(vars.q); colormap = :balance)
+
+contourf!(axψ, x, y, Array(vars.ψ); colormap = :viridis)
+
+fig</code></pre><p><img src="../singlelayerqg_betadecay-20.png" alt/></p><h2 id="Diagnostics"><a class="docs-heading-anchor" href="#Diagnostics">Diagnostics</a><a id="Diagnostics-1"></a><a class="docs-heading-anchor-permalink" href="#Diagnostics" title="Permalink"></a></h2><p>Create Diagnostics – <code>energy</code> and <code>enstrophy</code> functions are imported at the top.</p><pre><code class="language-julia hljs">E = Diagnostic(SingleLayerQG.energy, prob; nsteps)
+Z = Diagnostic(SingleLayerQG.enstrophy, prob; nsteps)
+diags = [E, Z] # A list of Diagnostics types passed to &quot;stepforward!&quot; will  be updated every timestep.</code></pre><h2 id="Output"><a class="docs-heading-anchor" href="#Output">Output</a><a id="Output-1"></a><a class="docs-heading-anchor-permalink" href="#Output" title="Permalink"></a></h2><p>We choose folder for outputing <code>.jld2</code> files and snapshots (<code>.png</code> files).</p><pre><code class="language-julia hljs">filepath = &quot;.&quot;
+plotpath = &quot;./plots_decayingbetaturb&quot;
+plotname = &quot;snapshots&quot;
+filename = joinpath(filepath, &quot;decayingbetaturb.jld2&quot;)</code></pre><p>Do some basic file management,</p><pre><code class="language-julia hljs">if isfile(filename); rm(filename); end
+if !isdir(plotpath); mkdir(plotpath); end</code></pre><p>and then create Output.</p><pre><code class="language-julia hljs">get_sol(prob) = prob.sol # extracts the Fourier-transformed solution
+out = Output(prob, filename, (:sol, get_sol))</code></pre><h2 id="Visualizing-the-simulation"><a class="docs-heading-anchor" href="#Visualizing-the-simulation">Visualizing the simulation</a><a id="Visualizing-the-simulation-1"></a><a class="docs-heading-anchor-permalink" href="#Visualizing-the-simulation" title="Permalink"></a></h2><p>We plot the vorticity and streamfunction and their corresponding zonal mean structure.</p><pre><code class="language-julia hljs">Lx, Ly = grid.Lx, grid.Ly
+
+title_q = Observable(@sprintf(&quot;vorticity, t = %.2f&quot;, clock.t))
+title_ψ = &quot;streamfunction ψ&quot;
+
+fig = Figure(resolution=(800, 720))
+
+axis_kwargs = (xlabel = &quot;x&quot;,
+               ylabel = &quot;y&quot;,
+               aspect = 1,
+               limits = ((-Lx/2, Lx/2), (-Ly/2, Ly/2)))
+
+axq = Axis(fig[1, 1]; title = title_q, axis_kwargs...)
+
+axψ = Axis(fig[2, 1]; title = title_ψ, axis_kwargs...)
+
+axq̄ = Axis(fig[1, 2],
+           xlabel = &quot;zonal mean vorticity&quot;,
+           ylabel = &quot;y&quot;,
+           aspect = 1,
+           limits = ((-2.1, 2.1), (-Ly/2, Ly/2)))
+
+axū = Axis(fig[2, 2],
+           xlabel = &quot;zonal mean u&quot;,
+           ylabel = &quot;y&quot;,
+           aspect = 1,
+           limits = ((-0.5, 0.5), (-Ly/2, Ly/2)))
+
+q  = Observable(Array(vars.q))
+ψ  = Observable(Array(vars.ψ))
+q̄ₘ = Observable(Array(vec(mean(vars.q, dims=1))))
+ūₘ = Observable(Array(vec(mean(vars.u, dims=1))))
+
+heatmap!(axq, x, y, q;
+         colormap = :balance, colorrange = (-12, 12))
+
+levels = collect(range(-0.7, stop=0.7, length=20))
+
+contourf!(axψ, x, y, ψ;
+         levels, colormap = :viridis, colorrange = (-0.35, 0.35))
+contour!(axψ, x, y, ψ;
+         levels, color = :black)
+
+lines!(axq̄, q̄ₘ, y; linewidth = 3)
+lines!(axq̄, 0y, y; linewidth = 1, linestyle = :dash)
+
+lines!(axū, ūₘ, y; linewidth = 3)
+lines!(axū, 0y, y; lindewidth = 1, linestyle = :dash)
+
+fig</code></pre><p><img src="../singlelayerqg_betadecay-33.png" alt/></p><h2 id="Time-stepping-the-Problem-forward"><a class="docs-heading-anchor" href="#Time-stepping-the-Problem-forward">Time-stepping the <code>Problem</code> forward</a><a id="Time-stepping-the-Problem-forward-1"></a><a class="docs-heading-anchor-permalink" href="#Time-stepping-the-Problem-forward" title="Permalink"></a></h2><p>We step the <code>Problem</code> forward in time.</p><pre><code class="language-julia hljs">startwalltime = time()
+
+frames = 0:round(Int, nsteps / nsubs)
+
+record(fig, &quot;singlelayerqg_betadecay.mp4&quot;, frames, framerate = 12) do j
+  if j % round(Int, nsteps/nsubs / 4) == 0
+    cfl = clock.dt * maximum([maximum(vars.u) / grid.dx, maximum(vars.v) / grid.dy])
+
+    log = @sprintf(&quot;step: %04d, t: %d, cfl: %.2f, E: %.4f, Q: %.4f, walltime: %.2f min&quot;,
+      clock.step, clock.t, cfl, E.data[E.i], Z.data[Z.i], (time()-startwalltime)/60)
+
+    println(log)
+  end
+
+  q[] = vars.q
+  ψ[] = vars.ψ
+  q̄ₘ[] = vec(mean(vars.q, dims=1))
+  ūₘ[] = vec(mean(vars.u, dims=1))
+
+  title_q[] = @sprintf(&quot;vorticity, t = %.2f&quot;, clock.t)
+
+  stepforward!(prob, diags, nsubs)
+  SingleLayerQG.updatevars!(prob)
+end</code></pre><pre><code class="nohighlight hljs">step: 0000, t: 0, cfl: 0.90, E: 0.0800, Q: 4.9303, walltime: 0.00 min
+step: 0500, t: 20, cfl: 0.75, E: 0.0787, Q: 1.8418, walltime: 0.17 min
+step: 1000, t: 40, cfl: 0.75, E: 0.0785, Q: 1.2191, walltime: 0.30 min
+step: 1500, t: 60, cfl: 0.88, E: 0.0784, Q: 1.0377, walltime: 0.42 min
+step: 2000, t: 80, cfl: 0.82, E: 0.0783, Q: 0.9599, walltime: 0.55 min
+</code></pre><p><video src="../singlelayerqg_betadecay.mp4" controls="true" title><a href="../singlelayerqg_betadecay.mp4"></a></video></p><h2 id="Save"><a class="docs-heading-anchor" href="#Save">Save</a><a id="Save-1"></a><a class="docs-heading-anchor-permalink" href="#Save" title="Permalink"></a></h2><p>Finally, we can save, e.g., the last snapshot via</p><pre><code class="language-julia hljs">savename = @sprintf(&quot;%s_%09d.png&quot;, joinpath(plotpath, plotname), clock.step)
+savefig(savename)</code></pre><hr/><p><em>This page was generated using <a href="https://github.com/fredrikekre/Literate.jl">Literate.jl</a>.</em></p></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../twodnavierstokes_stochasticforcing_budgets/">« 2D forced-dissipative turbulence budgets</a><a class="docs-footer-nextpage" href="../singlelayerqg_betaforced/">Forced-dissipative barotropic QG beta-plane turbulence »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option><option value="auto">Automatic (OS)</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.2.1 on <span class="colophon-date" title="Monday 11 December 2023 10:00">Monday 11 December 2023</span>. Using Julia version 1.9.4.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
