@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Decaying Surface QG turbulence · GeophysicalFlows.jl</title><meta name="title" content="Decaying Surface QG turbulence · GeophysicalFlows.jl"/><meta property="og:title" content="Decaying Surface QG turbulence · GeophysicalFlows.jl"/><meta property="twitter:title" content="Decaying Surface QG turbulence · GeophysicalFlows.jl"/><meta name="description" content="Documentation for GeophysicalFlows.jl."/><meta property="og:description" content="Documentation for GeophysicalFlows.jl."/><meta property="twitter:description" content="Documentation for GeophysicalFlows.jl."/><meta property="og:url" content="https://fourierflows.github.io/GeophysicalFlowsDocumentation/stable/literated/surfaceqg_decaying/"/><meta property="twitter:url" content="https://fourierflows.github.io/GeophysicalFlowsDocumentation/stable/literated/surfaceqg_decaying/"/><link rel="canonical" href="https://fourierflows.github.io/GeophysicalFlowsDocumentation/stable/literated/surfaceqg_decaying/"/><script data-outdated-warner src="../../assets/warner.js"></script><link href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.050/juliamono.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="../../assets/documenter.js"></script><script src="../../search_index.js"></script><script src="../../siteinfo.js"></script><script src="../../../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="../../assets/themeswap.js"></script></head><body><div id="documenter"><nav class="docs-sidebar"><div class="docs-package-name"><span class="docs-autofit"><a href="../../">GeophysicalFlows.jl</a></span></div><button class="docs-search-query input is-rounded is-small is-clickable my-2 mx-auto py-1 px-2" id="documenter-search-query">Search docs (Ctrl + /)</button><ul class="docs-menu"><li><a class="tocitem" href="../../">Home</a></li><li><a class="tocitem" href="../../installation_instructions/">Installation instructions</a></li><li><a class="tocitem" href="../../aliasing/">Aliasing</a></li><li><a class="tocitem" href="../../gpu/">GPU</a></li><li><a class="tocitem" href="../../visualize/">Visualize output</a></li><li><span class="tocitem">Examples</span><ul><li><input class="collapse-toggle" id="menuitem-6-1" type="checkbox"/><label class="tocitem" for="menuitem-6-1"><span class="docs-label">TwoDNavierStokes</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../twodnavierstokes_decaying/">2D decaying turbulence</a></li><li><a class="tocitem" href="../twodnavierstokes_stochasticforcing/">2D forced-dissipative turbulence</a></li><li><a class="tocitem" href="../twodnavierstokes_stochasticforcing_budgets/">2D forced-dissipative turbulence budgets</a></li></ul></li><li><input class="collapse-toggle" id="menuitem-6-2" type="checkbox"/><label class="tocitem" for="menuitem-6-2"><span class="docs-label">SingleLayerQG</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../singlelayerqg_betadecay/">Decaying barotropic QG beta-plane turbulence</a></li><li><a class="tocitem" href="../singlelayerqg_betaforced/">Forced-dissipative barotropic QG beta-plane turbulence</a></li><li><a class="tocitem" href="../singlelayerqg_decaying_topography/">Decaying barotropic QG turbulence over topography</a></li><li><a class="tocitem" href="../singlelayerqg_decaying_barotropic_equivalentbarotropic/">SingleLayerQG decaying 2D turbulence with and without finite Rossby radius of deformation</a></li></ul></li><li><input class="collapse-toggle" id="menuitem-6-3" type="checkbox"/><label class="tocitem" for="menuitem-6-3"><span class="docs-label">BarotropicQGQL</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../barotropicqgql_betaforced/">Quasi-Linear forced-dissipative barotropic QG beta-plane turbulence</a></li></ul></li><li><input class="collapse-toggle" id="menuitem-6-4" type="checkbox"/><label class="tocitem" for="menuitem-6-4"><span class="docs-label">MultiLayerQG</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../multilayerqg_2layer/">Phillips model of Baroclinic Instability</a></li></ul></li><li><input class="collapse-toggle" id="menuitem-6-5" type="checkbox" checked/><label class="tocitem" for="menuitem-6-5"><span class="docs-label">SurfaceQG</span><i class="docs-chevron"></i></label><ul class="collapsed"><li class="is-active"><a class="tocitem" href>Decaying Surface QG turbulence</a><ul class="internal"><li><a class="tocitem" href="#Install-dependencies"><span>Install dependencies</span></a></li><li><a class="tocitem" href="#Let&#39;s-begin"><span>Let&#39;s begin</span></a></li><li><a class="tocitem" href="#Choosing-a-device:-CPU-or-GPU"><span>Choosing a device: CPU or GPU</span></a></li><li><a class="tocitem" href="#Numerical-parameters-and-time-stepping-parameters"><span>Numerical parameters and time-stepping parameters</span></a></li><li><a class="tocitem" href="#Physical-parameters"><span>Physical parameters</span></a></li><li><a class="tocitem" href="#Problem-setup"><span>Problem setup</span></a></li><li><a class="tocitem" href="#Setting-initial-conditions"><span>Setting initial conditions</span></a></li><li><a class="tocitem" href="#Diagnostics"><span>Diagnostics</span></a></li><li><a class="tocitem" href="#Output"><span>Output</span></a></li><li><a class="tocitem" href="#Visualizing-the-simulation"><span>Visualizing the simulation</span></a></li><li><a class="tocitem" href="#Time-stepping-the-Problem-forward-and-create-animation-by-updating-the-plot."><span>Time-stepping the <code>Problem</code> forward and create animation by updating the plot.</span></a></li><li><a class="tocitem" href="#Save"><span>Save</span></a></li></ul></li></ul></li></ul></li><li><span class="tocitem">Modules</span><ul><li><a class="tocitem" href="../../modules/twodnavierstokes/">TwoDNavierStokes</a></li><li><a class="tocitem" href="../../modules/singlelayerqg/">SingleLayerQG</a></li><li><a class="tocitem" href="../../modules/barotropicqgql/">BarotropicQGQL</a></li><li><a class="tocitem" href="../../modules/multilayerqg/">MultiLayerQG</a></li><li><a class="tocitem" href="../../modules/surfaceqg/">SurfaceQG</a></li></ul></li><li><a class="tocitem" href="../../stochastic_forcing/">Stochastic forcing</a></li><li><a class="tocitem" href="../../contributing/">Contributor&#39;s guide</a></li><li><a class="tocitem" href="../../references/">References</a></li><li><span class="tocitem">Library</span><ul><li><a class="tocitem" href="../../lib/types/">Private types</a></li><li><a class="tocitem" href="../../lib/functions/">Functions</a></li></ul></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><a class="docs-sidebar-button docs-navbar-link fa-solid fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a><nav class="breadcrumb"><ul class="is-hidden-mobile"><li><a class="is-disabled">Examples</a></li><li><a class="is-disabled">SurfaceQG</a></li><li class="is-active"><a href>Decaying Surface QG turbulence</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href>Decaying Surface QG turbulence</a></li></ul></nav><div class="docs-right"><a class="docs-navbar-link" href="https://github.com/FourierFlows/GeophysicalFlows.jl" title="View the repository on GitHub"><span class="docs-icon fa-brands"></span><span class="docs-label is-hidden-touch">GitHub</span></a><a class="docs-navbar-link" href="https://github.com/FourierFlows/GeophysicalFlows.jl/blob/main/examples/surfaceqg_decaying.jl" title="Edit source on GitHub"><span class="docs-icon fa-solid"></span></a><a class="docs-settings-button docs-navbar-link fa-solid fa-gear" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-article-toggle-button fa-solid fa-chevron-up" id="documenter-article-toggle-button" href="javascript:;" title="Collapse all docstrings"></a></div></header><article class="content" id="documenter-page"><h1 id="surfaceqg_decaying_example"><a class="docs-heading-anchor" href="#surfaceqg_decaying_example">Decaying Surface QG turbulence</a><a id="surfaceqg_decaying_example-1"></a><a class="docs-heading-anchor-permalink" href="#surfaceqg_decaying_example" title="Permalink"></a></h1><p>A simulation of decaying surface quasi-geostrophic turbulence. We reproduce here the initial value problem for an elliptical vortex as done by <a href="../../references/#Held-etal-1995">Held <em>et al.</em> (1995)</a>.</p><p>An example of decaying barotropic quasi-geostrophic turbulence over topography.</p><h2 id="Install-dependencies"><a class="docs-heading-anchor" href="#Install-dependencies">Install dependencies</a><a id="Install-dependencies-1"></a><a class="docs-heading-anchor-permalink" href="#Install-dependencies" title="Permalink"></a></h2><p>First let&#39;s make sure we have all required packages installed.</p><pre><code class="language-julia hljs">using Pkg
+pkg&quot;add GeophysicalFlows, CairoMakie&quot;</code></pre><h2 id="Let&#39;s-begin"><a class="docs-heading-anchor" href="#Let&#39;s-begin">Let&#39;s begin</a><a id="Let&#39;s-begin-1"></a><a class="docs-heading-anchor-permalink" href="#Let&#39;s-begin" title="Permalink"></a></h2><p>Let&#39;s load <code>GeophysicalFlows.jl</code> and some other packages we need.</p><pre><code class="language-julia hljs">using GeophysicalFlows, CairoMakie, Printf, Random
+
+using Statistics: mean
+using Random: seed!</code></pre><h2 id="Choosing-a-device:-CPU-or-GPU"><a class="docs-heading-anchor" href="#Choosing-a-device:-CPU-or-GPU">Choosing a device: CPU or GPU</a><a id="Choosing-a-device:-CPU-or-GPU-1"></a><a class="docs-heading-anchor-permalink" href="#Choosing-a-device:-CPU-or-GPU" title="Permalink"></a></h2><pre><code class="language-julia hljs">dev = CPU()     # Device (CPU/GPU)</code></pre><h2 id="Numerical-parameters-and-time-stepping-parameters"><a class="docs-heading-anchor" href="#Numerical-parameters-and-time-stepping-parameters">Numerical parameters and time-stepping parameters</a><a id="Numerical-parameters-and-time-stepping-parameters-1"></a><a class="docs-heading-anchor-permalink" href="#Numerical-parameters-and-time-stepping-parameters" title="Permalink"></a></h2><pre><code class="language-julia hljs">      n = 256                       # 2D resolution = n²
+stepper = &quot;FilteredETDRK4&quot;          # timestepper
+     dt = 0.03                      # timestep
+     tf = 60                        # length of time for simulation
+ nsteps = Int(tf / dt)              # total number of time-steps
+ nsubs  = round(Int, nsteps/100)    # number of time-steps for intermediate logging/plotting (nsteps must be multiple of nsubs)</code></pre><h2 id="Physical-parameters"><a class="docs-heading-anchor" href="#Physical-parameters">Physical parameters</a><a id="Physical-parameters-1"></a><a class="docs-heading-anchor-permalink" href="#Physical-parameters" title="Permalink"></a></h2><pre><code class="language-julia hljs"> L = 2π        # domain size
+ ν = 1e-19     # hyper-viscosity coefficient
+nν = 4         # hyper-viscosity order</code></pre><h2 id="Problem-setup"><a class="docs-heading-anchor" href="#Problem-setup">Problem setup</a><a id="Problem-setup-1"></a><a class="docs-heading-anchor-permalink" href="#Problem-setup" title="Permalink"></a></h2><p>We initialize a <code>Problem</code> by providing a set of keyword arguments. We use <code>stepper = &quot;FilteredRK4&quot;</code>. Filtered timesteppers apply a wavenumber-filter at every time-step that removes enstrophy at high wavenumbers and, thereby, stabilize the problem, despite that we use the default viscosity coefficient <code>ν=0</code>.</p><pre><code class="language-julia hljs">prob = SurfaceQG.Problem(dev; nx=n, Lx=L, dt, stepper, ν, nν)</code></pre><p>Let&#39;s define some shortcuts.</p><pre><code class="language-julia hljs">sol, clock, vars, params, grid = prob.sol, prob.clock, prob.vars, prob.params, prob.grid
+x,  y  = grid.x,  grid.y
+Lx, Ly = grid.Lx, grid.Ly</code></pre><h2 id="Setting-initial-conditions"><a class="docs-heading-anchor" href="#Setting-initial-conditions">Setting initial conditions</a><a id="Setting-initial-conditions-1"></a><a class="docs-heading-anchor-permalink" href="#Setting-initial-conditions" title="Permalink"></a></h2><p>We initialize the buoyancy equation with an elliptical vortex.</p><pre><code class="language-julia hljs">X, Y = gridpoints(grid)
+b₀ = @. exp(-(X^2 + 4Y^2))
+
+SurfaceQG.set_b!(prob, b₀)</code></pre><p>Let&#39;s plot the initial condition. Note that when plotting, we decorate the variable to be plotted with <code>Array()</code> to make sure it is brought back on the CPU when <code>vars</code> live on the GPU.</p><pre><code class="language-julia hljs">fig = Figure(resolution = (500, 500))
+
+ax = Axis(fig[1, 1],
+          xlabel = &quot;x&quot;,
+          ylabel = &quot;y&quot;,
+          aspect = 1,
+          title = &quot;buoyancy bₛ&quot;,
+          limits = ((-Lx/2, Lx/2), (-Ly/2, Ly/2)))
+
+hm = heatmap!(ax, x, y, Array(vars.b);
+              colormap = :deep, colorrange = (0, 1))
+
+Colorbar(fig[1, 2], hm)
+
+fig</code></pre><p><img src="../surfaceqg_decaying-19.png" alt/></p><h2 id="Diagnostics"><a class="docs-heading-anchor" href="#Diagnostics">Diagnostics</a><a id="Diagnostics-1"></a><a class="docs-heading-anchor-permalink" href="#Diagnostics" title="Permalink"></a></h2><p>Create Diagnostics; <code>buoyancy_variance</code>, <code>kinetic_energy</code> and <code>buoyancy_dissipation</code> functions were imported at the top.</p><pre><code class="language-julia hljs">B  = Diagnostic(SurfaceQG.buoyancy_variance, prob; nsteps)
+KE = Diagnostic(SurfaceQG.kinetic_energy, prob; nsteps)
+Dᵇ = Diagnostic(SurfaceQG.buoyancy_dissipation, prob; nsteps)
+diags = [B, KE, Dᵇ] # A list of Diagnostics types passed to `stepforward!`. Diagnostics are updated every timestep.</code></pre><h2 id="Output"><a class="docs-heading-anchor" href="#Output">Output</a><a id="Output-1"></a><a class="docs-heading-anchor-permalink" href="#Output" title="Permalink"></a></h2><p>We choose folder for outputing <code>.jld2</code> files and snapshots (<code>.png</code> files). Define base filename so saved data can be distinguished from other runs</p><pre><code class="language-julia hljs">base_filename = string(&quot;SurfaceQG_decaying_n_&quot;, n)</code></pre><pre><code class="nohighlight hljs">&quot;SurfaceQG_decaying_n_256&quot;</code></pre><p>We choose folder for outputing <code>.jld2</code> files and snapshots (<code>.png</code> files).</p><pre><code class="language-julia hljs">datapath = &quot;./&quot;
+plotpath = &quot;./&quot;
+
+dataname = joinpath(datapath, base_filename)
+plotname = joinpath(plotpath, base_filename)</code></pre><p>Do some basic file management,</p><pre><code class="language-julia hljs">if !isdir(plotpath); mkdir(plotpath); end
+if !isdir(datapath); mkdir(datapath); end</code></pre><p>and then create Output.</p><pre><code class="language-julia hljs">get_sol(prob) = prob.sol # extracts the Fourier-transformed solution
+get_u(prob) = irfft(im * prob.grid.l .* sqrt.(prob.grid.invKrsq) .* prob.sol, prob.grid.nx)
+
+out = Output(prob, dataname, (:sol, get_sol), (:u, get_u))</code></pre><h2 id="Visualizing-the-simulation"><a class="docs-heading-anchor" href="#Visualizing-the-simulation">Visualizing the simulation</a><a id="Visualizing-the-simulation-1"></a><a class="docs-heading-anchor-permalink" href="#Visualizing-the-simulation" title="Permalink"></a></h2><p>We define a function that plots the buoyancy field and the time evolution of kinetic energy and buoyancy variance.</p><pre><code class="language-julia hljs">b = Observable(Array(vars.b))
+
+ke = Observable([Point2f(KE.t[1], KE.data[1])])
+b² = Observable([Point2f(B.t[1], B.data[1])])
+
+title_b = Observable(&quot;buoyancy, t=&quot; * @sprintf(&quot;%.2f&quot;, clock.t))
+
+fig = Figure(resolution = (900, 600))
+
+axb = Axis(fig[1:2, 1];
+           xlabel = &quot;x&quot;,
+           ylabel = &quot;y&quot;,
+           title = title_b,
+           aspect = 1,
+           limits = ((-Lx/2, Lx/2), (-Ly/2, Ly/2)))
+
+axE = Axis(fig[1, 2];
+           xlabel = &quot;t&quot;,
+           limits = ((0, tf), (0, 2e-2)))
+
+heatmap!(axb, x, y, b;
+         colormap = :deep, colorrange = (0, 1))
+
+hE  = lines!(axE, ke; linewidth = 3)
+hb² = lines!(axE, b²; linewidth = 3)
+
+Legend(fig[2, 2], [hE, hb²], [&quot;kinetic energy ∫½(uₛ²+vₛ²)dxdy/L²&quot;, &quot;buoyancy variance ∫bₛ²dxdy/L²&quot;])
+
+fig</code></pre><p><img src="../surfaceqg_decaying-34.png" alt/></p><h2 id="Time-stepping-the-Problem-forward-and-create-animation-by-updating-the-plot."><a class="docs-heading-anchor" href="#Time-stepping-the-Problem-forward-and-create-animation-by-updating-the-plot.">Time-stepping the <code>Problem</code> forward and create animation by updating the plot.</a><a id="Time-stepping-the-Problem-forward-and-create-animation-by-updating-the-plot.-1"></a><a class="docs-heading-anchor-permalink" href="#Time-stepping-the-Problem-forward-and-create-animation-by-updating-the-plot." title="Permalink"></a></h2><pre><code class="language-julia hljs">startwalltime = time()
+
+record(fig, &quot;sqg_ellipticalvortex.mp4&quot;, 0:round(Int, nsteps/nsubs), framerate = 14) do j
+  if j % (500 / nsubs) == 0
+    cfl = clock.dt * maximum([maximum(vars.u) / grid.dx, maximum(vars.v) / grid.dy])
+
+    log1 = @sprintf(&quot;step: %04d, t: %.1f, cfl: %.3f, walltime: %.2f min&quot;,
+          clock.step, clock.t, cfl, (time()-startwalltime)/60)
+
+    log2 = @sprintf(&quot;buoyancy variance: %.2e, buoyancy variance dissipation: %.2e&quot;,
+              B.data[B.i], Dᵇ.data[Dᵇ.i])
+
+    println(log1)
+
+    println(log2)
+  end
+
+  b[] = vars.b
+
+  ke[] = push!(ke[], Point2f(KE.t[KE.i], KE.data[KE.i]))
+  b²[] = push!(b²[], Point2f(B.t[B.i], B.data[B.i]))
+
+  title_b[] = &quot;buoyancy, t=&quot; * @sprintf(&quot;%.2f&quot;, clock.t)
+
+  stepforward!(prob, diags, nsubs)
+  SurfaceQG.updatevars!(prob)
+end</code></pre><pre><code class="nohighlight hljs">step: 0000, t: 0.0, cfl: 0.639, walltime: 0.00 min
+buoyancy variance: 1.83e-02, buoyancy variance dissipation: 1.28e-16
+step: 0500, t: 15.0, cfl: 0.588, walltime: 0.06 min
+buoyancy variance: 1.83e-02, buoyancy variance dissipation: 4.07e-11
+step: 1000, t: 30.0, cfl: 0.571, walltime: 0.10 min
+buoyancy variance: 1.83e-02, buoyancy variance dissipation: 5.59e-09
+step: 1500, t: 45.0, cfl: 0.577, walltime: 0.15 min
+buoyancy variance: 1.83e-02, buoyancy variance dissipation: 1.01e-08
+step: 2000, t: 60.0, cfl: 0.574, walltime: 0.20 min
+buoyancy variance: 1.82e-02, buoyancy variance dissipation: 1.12e-08
+</code></pre><p><video src="../sqg_ellipticalvortex.mp4" controls="true" title><a href="../sqg_ellipticalvortex.mp4"></a></video></p><p>Let&#39;s see how all flow fields look like at the end of the simulation.</p><pre><code class="language-julia hljs">fig = Figure(resolution = (800, 380))
+
+axis_kwargs = (xlabel = &quot;x&quot;,
+               ylabel = &quot;y&quot;,
+               aspect = 1,
+               limits = ((-Lx/2, Lx/2), (-Ly/2, Ly/2)))
+
+axb = Axis(fig[1, 1]; title = &quot;bₛ(x, y, t=&quot; * @sprintf(&quot;%.2f&quot;, clock.t) * &quot;)&quot;, axis_kwargs...)
+axu = Axis(fig[1, 2]; title = &quot;uₛ(x, y, t=&quot; * @sprintf(&quot;%.2f&quot;, clock.t) * &quot;)&quot;, axis_kwargs...)
+axv = Axis(fig[1, 3]; title = &quot;vₛ(x, y, t=&quot; * @sprintf(&quot;%.2f&quot;, clock.t) * &quot;)&quot;, axis_kwargs...)
+
+hb = heatmap!(axb, x, y, Array(vars.b);
+              colormap = :deep, colorrange = (0, 1))
+
+Colorbar(fig[2, 1], hb, vertical = false)
+
+hu = heatmap!(axu, x, y, Array(vars.u);
+              colormap = :balance, colorrange = (-maximum(abs.(vars.u)), maximum(abs.(vars.u))))
+
+Colorbar(fig[2, 2], hu, vertical = false)
+
+hv = heatmap!(axv, x, y, Array(vars.v);
+              colormap = :balance, colorrange = (-maximum(abs.(vars.v)), maximum(abs.(vars.v))))
+
+Colorbar(fig[2, 3], hv, vertical = false)
+
+fig</code></pre><p><img src="../surfaceqg_decaying-39.png" alt/></p><h2 id="Save"><a class="docs-heading-anchor" href="#Save">Save</a><a id="Save-1"></a><a class="docs-heading-anchor-permalink" href="#Save" title="Permalink"></a></h2><p>We can save the output at the end of the simulation by calling</p><pre><code class="language-julia hljs">saveoutput(out)</code></pre><hr/><p><em>This page was generated using <a href="https://github.com/fredrikekre/Literate.jl">Literate.jl</a>.</em></p></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../multilayerqg_2layer/">« Phillips model of Baroclinic Instability</a><a class="docs-footer-nextpage" href="../../modules/twodnavierstokes/">TwoDNavierStokes »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option><option value="auto">Automatic (OS)</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.2.1 on <span class="colophon-date" title="Monday 11 December 2023 10:00">Monday 11 December 2023</span>. Using Julia version 1.9.4.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>

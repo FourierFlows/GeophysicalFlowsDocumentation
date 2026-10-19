@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Quasi-Linear forced-dissipative barotropic QG beta-plane turbulence · GeophysicalFlows.jl</title><meta name="title" content="Quasi-Linear forced-dissipative barotropic QG beta-plane turbulence · GeophysicalFlows.jl"/><meta property="og:title" content="Quasi-Linear forced-dissipative barotropic QG beta-plane turbulence · GeophysicalFlows.jl"/><meta property="twitter:title" content="Quasi-Linear forced-dissipative barotropic QG beta-plane turbulence · GeophysicalFlows.jl"/><meta name="description" content="Documentation for GeophysicalFlows.jl."/><meta property="og:description" content="Documentation for GeophysicalFlows.jl."/><meta property="twitter:description" content="Documentation for GeophysicalFlows.jl."/><meta property="og:url" content="https://fourierflows.github.io/GeophysicalFlowsDocumentation/stable/literated/barotropicqgql_betaforced/"/><meta property="twitter:url" content="https://fourierflows.github.io/GeophysicalFlowsDocumentation/stable/literated/barotropicqgql_betaforced/"/><link rel="canonical" href="https://fourierflows.github.io/GeophysicalFlowsDocumentation/stable/literated/barotropicqgql_betaforced/"/><script data-outdated-warner src="../../assets/warner.js"></script><link href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.050/juliamono.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="../../assets/documenter.js"></script><script src="../../search_index.js"></script><script src="../../siteinfo.js"></script><script src="../../../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="../../assets/themeswap.js"></script></head><body><div id="documenter"><nav class="docs-sidebar"><div class="docs-package-name"><span class="docs-autofit"><a href="../../">GeophysicalFlows.jl</a></span></div><button class="docs-search-query input is-rounded is-small is-clickable my-2 mx-auto py-1 px-2" id="documenter-search-query">Search docs (Ctrl + /)</button><ul class="docs-menu"><li><a class="tocitem" href="../../">Home</a></li><li><a class="tocitem" href="../../installation_instructions/">Installation instructions</a></li><li><a class="tocitem" href="../../aliasing/">Aliasing</a></li><li><a class="tocitem" href="../../gpu/">GPU</a></li><li><a class="tocitem" href="../../visualize/">Visualize output</a></li><li><span class="tocitem">Examples</span><ul><li><input class="collapse-toggle" id="menuitem-6-1" type="checkbox"/><label class="tocitem" for="menuitem-6-1"><span class="docs-label">TwoDNavierStokes</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../twodnavierstokes_decaying/">2D decaying turbulence</a></li><li><a class="tocitem" href="../twodnavierstokes_stochasticforcing/">2D forced-dissipative turbulence</a></li><li><a class="tocitem" href="../twodnavierstokes_stochasticforcing_budgets/">2D forced-dissipative turbulence budgets</a></li></ul></li><li><input class="collapse-toggle" id="menuitem-6-2" type="checkbox"/><label class="tocitem" for="menuitem-6-2"><span class="docs-label">SingleLayerQG</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../singlelayerqg_betadecay/">Decaying barotropic QG beta-plane turbulence</a></li><li><a class="tocitem" href="../singlelayerqg_betaforced/">Forced-dissipative barotropic QG beta-plane turbulence</a></li><li><a class="tocitem" href="../singlelayerqg_decaying_topography/">Decaying barotropic QG turbulence over topography</a></li><li><a class="tocitem" href="../singlelayerqg_decaying_barotropic_equivalentbarotropic/">SingleLayerQG decaying 2D turbulence with and without finite Rossby radius of deformation</a></li></ul></li><li><input class="collapse-toggle" id="menuitem-6-3" type="checkbox" checked/><label class="tocitem" for="menuitem-6-3"><span class="docs-label">BarotropicQGQL</span><i class="docs-chevron"></i></label><ul class="collapsed"><li class="is-active"><a class="tocitem" href>Quasi-Linear forced-dissipative barotropic QG beta-plane turbulence</a><ul class="internal"><li><a class="tocitem" href="#Install-dependencies"><span>Install dependencies</span></a></li><li><a class="tocitem" href="#Let&#39;s-begin"><span>Let&#39;s begin</span></a></li><li><a class="tocitem" href="#Choosing-a-device:-CPU-or-GPU"><span>Choosing a device: CPU or GPU</span></a></li><li><a class="tocitem" href="#Numerical-parameters-and-time-stepping-parameters"><span>Numerical parameters and time-stepping parameters</span></a></li><li><a class="tocitem" href="#Physical-parameters"><span>Physical parameters</span></a></li><li><a class="tocitem" href="#Forcing"><span>Forcing</span></a></li><li><a class="tocitem" href="#Problem-setup"><span>Problem setup</span></a></li><li><a class="tocitem" href="#Setting-initial-conditions"><span>Setting initial conditions</span></a></li><li><a class="tocitem" href="#Diagnostics"><span>Diagnostics</span></a></li><li><a class="tocitem" href="#Output"><span>Output</span></a></li><li><a class="tocitem" href="#Visualizing-the-simulation"><span>Visualizing the simulation</span></a></li><li><a class="tocitem" href="#Time-stepping-the-Problem-forward"><span>Time-stepping the <code>Problem</code> forward</span></a></li><li><a class="tocitem" href="#Save"><span>Save</span></a></li></ul></li></ul></li><li><input class="collapse-toggle" id="menuitem-6-4" type="checkbox"/><label class="tocitem" for="menuitem-6-4"><span class="docs-label">MultiLayerQG</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../multilayerqg_2layer/">Phillips model of Baroclinic Instability</a></li></ul></li><li><input class="collapse-toggle" id="menuitem-6-5" type="checkbox"/><label class="tocitem" for="menuitem-6-5"><span class="docs-label">SurfaceQG</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../surfaceqg_decaying/">Decaying Surface QG turbulence</a></li></ul></li></ul></li><li><span class="tocitem">Modules</span><ul><li><a class="tocitem" href="../../modules/twodnavierstokes/">TwoDNavierStokes</a></li><li><a class="tocitem" href="../../modules/singlelayerqg/">SingleLayerQG</a></li><li><a class="tocitem" href="../../modules/barotropicqgql/">BarotropicQGQL</a></li><li><a class="tocitem" href="../../modules/multilayerqg/">MultiLayerQG</a></li><li><a class="tocitem" href="../../modules/surfaceqg/">SurfaceQG</a></li></ul></li><li><a class="tocitem" href="../../stochastic_forcing/">Stochastic forcing</a></li><li><a class="tocitem" href="../../contributing/">Contributor&#39;s guide</a></li><li><a class="tocitem" href="../../references/">References</a></li><li><span class="tocitem">Library</span><ul><li><a class="tocitem" href="../../lib/types/">Private types</a></li><li><a class="tocitem" href="../../lib/functions/">Functions</a></li></ul></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><a class="docs-sidebar-button docs-navbar-link fa-solid fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a><nav class="breadcrumb"><ul class="is-hidden-mobile"><li><a class="is-disabled">Examples</a></li><li><a class="is-disabled">BarotropicQGQL</a></li><li class="is-active"><a href>Quasi-Linear forced-dissipative barotropic QG beta-plane turbulence</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href>Quasi-Linear forced-dissipative barotropic QG beta-plane turbulence</a></li></ul></nav><div class="docs-right"><a class="docs-navbar-link" href="https://github.com/FourierFlows/GeophysicalFlows.jl" title="View the repository on GitHub"><span class="docs-icon fa-brands"></span><span class="docs-label is-hidden-touch">GitHub</span></a><a class="docs-navbar-link" href="https://github.com/FourierFlows/GeophysicalFlows.jl/blob/main/examples/barotropicqgql_betaforced.jl" title="Edit source on GitHub"><span class="docs-icon fa-solid"></span></a><a class="docs-settings-button docs-navbar-link fa-solid fa-gear" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-article-toggle-button fa-solid fa-chevron-up" id="documenter-article-toggle-button" href="javascript:;" title="Collapse all docstrings"></a></div></header><article class="content" id="documenter-page"><h1 id="barotropicqgql_betaforced_example"><a class="docs-heading-anchor" href="#barotropicqgql_betaforced_example">Quasi-Linear forced-dissipative barotropic QG beta-plane turbulence</a><a id="barotropicqgql_betaforced_example-1"></a><a class="docs-heading-anchor-permalink" href="#barotropicqgql_betaforced_example" title="Permalink"></a></h1><p>A simulation of forced-dissipative barotropic quasi-geostrophic turbulence on a beta plane under the <em>quasi-linear approximation</em>. The dynamics include linear drag and stochastic excitation.</p><h2 id="Install-dependencies"><a class="docs-heading-anchor" href="#Install-dependencies">Install dependencies</a><a id="Install-dependencies-1"></a><a class="docs-heading-anchor-permalink" href="#Install-dependencies" title="Permalink"></a></h2><p>First let&#39;s make sure we have all required packages installed.</p><pre><code class="language-julia hljs">using Pkg
+pkg&quot;add GeophysicalFlows, CUDA, CairoMakie&quot;</code></pre><h2 id="Let&#39;s-begin"><a class="docs-heading-anchor" href="#Let&#39;s-begin">Let&#39;s begin</a><a id="Let&#39;s-begin-1"></a><a class="docs-heading-anchor-permalink" href="#Let&#39;s-begin" title="Permalink"></a></h2><p>Let&#39;s load <code>GeophysicalFlows.jl</code> and some other packages we need.</p><pre><code class="language-julia hljs">using GeophysicalFlows, CUDA, Random, Printf, CairoMakie
+
+using Statistics: mean
+
+parsevalsum = FourierFlows.parsevalsum
+record = CairoMakie.record                # disambiguate between CairoMakie.record and CUDA.record</code></pre><h2 id="Choosing-a-device:-CPU-or-GPU"><a class="docs-heading-anchor" href="#Choosing-a-device:-CPU-or-GPU">Choosing a device: CPU or GPU</a><a id="Choosing-a-device:-CPU-or-GPU-1"></a><a class="docs-heading-anchor-permalink" href="#Choosing-a-device:-CPU-or-GPU" title="Permalink"></a></h2><pre><code class="language-julia hljs">dev = CPU()     # Device (CPU/GPU)</code></pre><h2 id="Numerical-parameters-and-time-stepping-parameters"><a class="docs-heading-anchor" href="#Numerical-parameters-and-time-stepping-parameters">Numerical parameters and time-stepping parameters</a><a id="Numerical-parameters-and-time-stepping-parameters-1"></a><a class="docs-heading-anchor-permalink" href="#Numerical-parameters-and-time-stepping-parameters" title="Permalink"></a></h2><pre><code class="language-julia hljs">      n = 128            # 2D resolution = n^2
+stepper = &quot;FilteredRK4&quot;  # timestepper
+     dt = 0.05           # timestep
+ nsteps = 8000           # total number of time-steps
+ nsubs  = 10             # number of time-steps for intermediate logging/plotting (nsteps must be multiple of nsubs)</code></pre><h2 id="Physical-parameters"><a class="docs-heading-anchor" href="#Physical-parameters">Physical parameters</a><a id="Physical-parameters-1"></a><a class="docs-heading-anchor-permalink" href="#Physical-parameters" title="Permalink"></a></h2><pre><code class="language-julia hljs">L = 2π        # domain size
+β = 10.0      # planetary PV gradient
+μ = 0.01      # bottom drag</code></pre><h2 id="Forcing"><a class="docs-heading-anchor" href="#Forcing">Forcing</a><a id="Forcing-1"></a><a class="docs-heading-anchor-permalink" href="#Forcing" title="Permalink"></a></h2><p>We force the vorticity equation with stochastic excitation that is delta-correlated in time and while spatially homogeneously and isotropically correlated. The forcing has a spectrum with power in a ring in wavenumber space of radius <span>$k_f$</span> (<code>forcing_wavenumber</code>) and width <span>$δ_f$</span> (<code>forcing_bandwidth</code>), and it injects energy per unit area and per unit time equal to <span>$\varepsilon$</span>. That is, the forcing covariance spectrum is proportional to <span>$\exp{[-(|\bm{k}| - k_f)^2 / (2 δ_f^2)]}$</span>.</p><pre><code class="language-julia hljs">forcing_wavenumber = 14.0 * 2π/L  # the forcing wavenumber, `k_f`, for a spectrum that is a ring in wavenumber space
+forcing_bandwidth  = 1.5  * 2π/L  # the width of the forcing spectrum, `δ_f`
+ε = 0.001                         # energy input rate by the forcing
+
+grid = TwoDGrid(dev; nx=n, Lx=L)
+
+K = @. sqrt(grid.Krsq)            # a 2D array with the total wavenumber
+
+forcing_spectrum = @. exp(-(K - forcing_wavenumber)^2 / (2 * forcing_bandwidth^2))
+@CUDA.allowscalar forcing_spectrum[grid.Krsq .== 0] .= 0 # ensure forcing has zero domain-average
+
+ε0 = parsevalsum(forcing_spectrum .* grid.invKrsq / 2, grid) / (grid.Lx * grid.Ly)
+@. forcing_spectrum *= ε/ε0       # normalize forcing to inject energy at rate ε</code></pre><p>We reset of the random number generator for reproducibility</p><pre><code class="language-julia hljs">if dev==CPU(); Random.seed!(1234); else; CUDA.seed!(1234); end</code></pre><p>Next we construct function <code>calcF!</code> that computes a forcing realization every timestep. First we make sure that if <code>dev=GPU()</code>, then <code>CUDA.rand()</code> function is called for random numbers uniformly distributed between 0 and 1.</p><pre><code class="language-julia hljs">random_uniform = dev==CPU() ? rand : CUDA.rand
+
+function calcF!(Fh, sol, t, clock, vars, params, grid)
+  T = eltype(grid)
+  @. Fh = sqrt(forcing_spectrum) * cis(2π * random_uniform(T)) / sqrt(clock.dt)
+
+  return nothing
+end</code></pre><h2 id="Problem-setup"><a class="docs-heading-anchor" href="#Problem-setup">Problem setup</a><a id="Problem-setup-1"></a><a class="docs-heading-anchor-permalink" href="#Problem-setup" title="Permalink"></a></h2><p>We initialize a <code>Problem</code> by providing a set of keyword arguments. We use <code>stepper = &quot;FilteredRK4&quot;</code>. Filtered timesteppers apply a wavenumber-filter at every time-step that removes enstrophy at high wavenumbers and, thereby, stabilize the problem, despite that we use the default viscosity coefficient <code>ν=0</code>. Thus, we choose not to do any dealiasing by providing <code>aliased_fraction=0</code>.</p><pre><code class="language-julia hljs">prob = BarotropicQGQL.Problem(dev; nx=n, Lx=L, β, μ, dt, stepper,
+                              calcF=calcF!, stochastic=true, aliased_fraction=0)</code></pre><p>and define some shortcuts.</p><pre><code class="language-julia hljs">sol, clock, vars, params, grid = prob.sol, prob.clock, prob.vars, prob.params, prob.grid
+x,  y  = grid.x, grid.y
+Lx, Ly = grid.Lx, grid.Ly</code></pre><p>First let&#39;s see how a forcing realization looks like. Note that when plotting, we decorate the variable to be plotted with <code>Array()</code> to make sure it is brought back on the CPU when <code>vars</code> live on the GPU.</p><pre><code class="language-julia hljs">calcF!(vars.Fh, sol, 0.0, clock, vars, params, grid)
+
+fig = Figure()
+
+ax = Axis(fig[1, 1],
+          xlabel = &quot;x&quot;,
+          ylabel = &quot;y&quot;,
+          aspect = 1,
+          title = &quot;a forcing realization&quot;,
+          limits = ((-Lx/2, Lx/2), (-Ly/2, Ly/2)))
+
+heatmap!(ax, x, y, Array(irfft(vars.Fh, grid.nx));
+         colormap = :balance, colorrange = (-8, 8))
+
+fig</code></pre><p><img src="../barotropicqgql_betaforced-24.png" alt/></p><h2 id="Setting-initial-conditions"><a class="docs-heading-anchor" href="#Setting-initial-conditions">Setting initial conditions</a><a id="Setting-initial-conditions-1"></a><a class="docs-heading-anchor-permalink" href="#Setting-initial-conditions" title="Permalink"></a></h2><p>Our initial condition is simply fluid at rest.</p><pre><code class="language-julia hljs">BarotropicQGQL.set_zeta!(prob, device_array(dev)(zeros(grid.nx, grid.ny)))</code></pre><h2 id="Diagnostics"><a class="docs-heading-anchor" href="#Diagnostics">Diagnostics</a><a id="Diagnostics-1"></a><a class="docs-heading-anchor-permalink" href="#Diagnostics" title="Permalink"></a></h2><p>Create Diagnostics – <code>energy</code> and <code>enstrophy</code> are functions imported at the top.</p><pre><code class="language-julia hljs">E = Diagnostic(BarotropicQGQL.energy, prob; nsteps)
+Z = Diagnostic(BarotropicQGQL.enstrophy, prob; nsteps)</code></pre><p>We can also define our custom diagnostics via functions.</p><pre><code class="language-julia hljs">zetaMean(prob) = prob.sol[1, :]
+
+zMean = Diagnostic(zetaMean, prob; nsteps, freq=10)  # the zonal-mean vorticity</code></pre><p>We combile all diags in a list.</p><pre><code class="language-julia hljs">diags = [E, Z, zMean] # A list of Diagnostics types passed to &quot;stepforward!&quot; will  be updated every timestep.</code></pre><h2 id="Output"><a class="docs-heading-anchor" href="#Output">Output</a><a id="Output-1"></a><a class="docs-heading-anchor-permalink" href="#Output" title="Permalink"></a></h2><p>We choose folder for outputing <code>.jld2</code> files and snapshots (<code>.png</code> files).</p><pre><code class="language-julia hljs">filepath = &quot;.&quot;
+plotpath = &quot;./plots_forcedbetaQLturb&quot;
+plotname = &quot;snapshots&quot;
+filename = joinpath(filepath, &quot;forcedbetaQLturb.jld2&quot;)</code></pre><p>Do some basic file management,</p><pre><code class="language-julia hljs">if isfile(filename); rm(filename); end
+if !isdir(plotpath); mkdir(plotpath); end</code></pre><p>and then create Output.</p><pre><code class="language-julia hljs">get_sol(prob) = prob.sol # extracts the Fourier-transformed solution
+
+function get_u(prob)
+  grid, vars = prob.grid, prob.vars
+
+  @. vars.uh = im * grid.l  * grid.invKrsq * sol
+  ldiv!(vars.u, grid.rfftplan, deepcopy(vars.uh))
+
+  return  vars.u
+end
+
+out = Output(prob, filename, (:sol, get_sol), (:u, get_u))</code></pre><pre><code class="nohighlight hljs">Output
+  ├──── prob: FourierFlows.Problem{DataType, Matrix{ComplexF64}, Float64, Matrix{ComplexF64}}
+  ├──── path: ./forcedbetaQLturb.jld2
+  └── fields: Dict{Symbol, Function}(:sol =&gt; Main.var&quot;##313&quot;.get_sol, :u =&gt; Main.var&quot;##313&quot;.get_u)</code></pre><h2 id="Visualizing-the-simulation"><a class="docs-heading-anchor" href="#Visualizing-the-simulation">Visualizing the simulation</a><a id="Visualizing-the-simulation-1"></a><a class="docs-heading-anchor-permalink" href="#Visualizing-the-simulation" title="Permalink"></a></h2><p>We define a function that plots the vorticity and streamfunction fields, the corresponding zonal-mean vorticity and zonal-mean zonal velocity and timeseries of energy and enstrophy.</p><pre><code class="language-julia hljs">title_ζ = Observable(@sprintf(&quot;vorticity, μt = %.2f&quot;, μ * clock.t))
+title_ψ = &quot;streamfunction ψ&quot;
+
+fig = Figure(resolution=(1000, 600))
+
+axis_kwargs = (xlabel = &quot;x&quot;,
+               ylabel = &quot;y&quot;,
+               aspect = 1,
+               limits = ((-Lx/2, Lx/2), (-Ly/2, Ly/2)))
+
+axζ = Axis(fig[1, 1]; title = title_ζ, axis_kwargs...)
+
+axψ = Axis(fig[2, 1]; title = title_ψ, axis_kwargs...)
+
+axζ̄ = Axis(fig[1, 2],
+           xlabel = &quot;zonal mean ζ&quot;,
+           ylabel = &quot;y&quot;,
+           aspect = 1,
+           limits = ((-3, 3), (-Ly/2, Ly/2)))
+
+axū = Axis(fig[2, 2],
+           xlabel = &quot;zonal mean u&quot;,
+           ylabel = &quot;y&quot;,
+           aspect = 1,
+           limits = ((-0.5, 0.5), (-Ly/2, Ly/2)))
+
+axE = Axis(fig[1, 3],
+           xlabel = &quot;μ t&quot;,
+           ylabel = &quot;energy&quot;,
+           aspect = 1,
+           limits = ((-0.1, 4.1), (0, 0.05)))
+
+axZ = Axis(fig[2, 3],
+           xlabel = &quot;μ t&quot;,
+           ylabel = &quot;enstrophy&quot;,
+           aspect = 1,
+           limits = ((-0.1, 4.1), (0, 5)))
+
+ζ̄, ζ′= prob.vars.Zeta, prob.vars.zeta
+ζ = Observable(Array(@. ζ̄ + ζ′))
+ψ̄, ψ′= prob.vars.Psi,  prob.vars.psi
+ψ = Observable(Array(@. ψ̄ + ψ′))
+ζ̄ₘ = Observable(Array(vec(mean(ζ̄, dims=1))))
+ūₘ = Observable(Array(vec(mean(prob.vars.U, dims=1))))
+
+μt = Observable(μ * E.t[1:1])
+energy = Observable(E.data[1:1])
+enstrophy = Observable(Z.data[1:1])
+
+heatmap!(axζ, x, y, ζ;
+         colormap = :balance, colorrange = (-8, 8))
+
+heatmap!(axψ, x, y, ψ;
+         colormap = :viridis, colorrange = (-0.22, 0.22))
+
+lines!(axζ̄, ζ̄ₘ, y; linewidth = 3)
+lines!(axζ̄, 0y, y; linewidth = 1, linestyle=:dash)
+
+lines!(axū, ūₘ, y; linewidth = 3)
+lines!(axū, 0y, y; linewidth = 1, linestyle=:dash)
+
+lines!(axE, μt, energy; linewidth = 3)
+lines!(axZ, μt, enstrophy; linewidth = 3, color = :red)
+</code></pre><h2 id="Time-stepping-the-Problem-forward"><a class="docs-heading-anchor" href="#Time-stepping-the-Problem-forward">Time-stepping the <code>Problem</code> forward</a><a id="Time-stepping-the-Problem-forward-1"></a><a class="docs-heading-anchor-permalink" href="#Time-stepping-the-Problem-forward" title="Permalink"></a></h2><p>We step the <code>Problem</code> forward in time.</p><pre><code class="language-julia hljs">startwalltime = time()
+
+frames = 0:round(Int, nsteps / nsubs)
+
+record(fig, &quot;barotropicqgql_betaforced.mp4&quot;, frames, framerate = 18) do j
+  if j % (1000 / nsubs) == 0
+    cfl = clock.dt * maximum([maximum(vars.u .+ vars.U) / grid.dx, maximum(vars.v) / grid.dy])
+
+    log = @sprintf(&quot;step: %04d, t: %d, cfl: %.2f, E: %.4f, Q: %.4f, walltime: %.2f min&quot;,
+      clock.step, clock.t, cfl, E.data[E.i], Z.data[Z.i],
+      (time()-startwalltime)/60)
+
+    println(log)
+  end
+
+  ζ[] = @. ζ̄ + ζ′
+  ψ[] = @. ψ̄ + ψ′
+  ζ̄ₘ[] = vec(mean(ζ̄, dims=1))
+  ūₘ[] = vec(mean(prob.vars.U, dims=1))
+
+  μt.val = μ * E.t[1:E.i]
+  energy[] = E.data[1:E.i]
+  enstrophy[] = Z.data[1:E.i]
+
+  title_ζ[] = @sprintf(&quot;vorticity, μt = %.2f&quot;, μ * clock.t)
+
+  stepforward!(prob, diags, nsubs)
+  BarotropicQGQL.updatevars!(prob)
+end</code></pre><pre><code class="nohighlight hljs">step: 0000, t: 0, cfl: 0.00, E: 0.0000, Q: 0.0000, walltime: 0.00 min
+step: 1000, t: 50, cfl: 0.64, E: 0.0286, Q: 3.9616, walltime: 0.10 min
+step: 2000, t: 100, cfl: 0.81, E: 0.0384, Q: 4.1193, walltime: 0.18 min
+step: 3000, t: 150, cfl: 0.80, E: 0.0441, Q: 4.4990, walltime: 0.27 min
+step: 4000, t: 200, cfl: 0.80, E: 0.0450, Q: 3.6810, walltime: 0.37 min
+step: 5000, t: 250, cfl: 0.87, E: 0.0472, Q: 4.0671, walltime: 0.46 min
+step: 6000, t: 300, cfl: 0.92, E: 0.0484, Q: 4.1866, walltime: 0.56 min
+step: 7000, t: 350, cfl: 0.89, E: 0.0482, Q: 3.8817, walltime: 0.66 min
+step: 8000, t: 400, cfl: 0.92, E: 0.0482, Q: 3.7857, walltime: 0.77 min
+</code></pre><p><video src="../barotropicqgql_betaforced.mp4" controls="true" title><a href="../barotropicqgql_betaforced.mp4"></a></video></p><h2 id="Save"><a class="docs-heading-anchor" href="#Save">Save</a><a id="Save-1"></a><a class="docs-heading-anchor-permalink" href="#Save" title="Permalink"></a></h2><p>Finally, we can save, e.g., the last snapshot via</p><pre><code class="language-julia hljs">savename = @sprintf(&quot;%s_%09d.png&quot;, joinpath(plotpath, plotname), clock.step)
+savefig(savename)</code></pre><hr/><p><em>This page was generated using <a href="https://github.com/fredrikekre/Literate.jl">Literate.jl</a>.</em></p></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../singlelayerqg_decaying_barotropic_equivalentbarotropic/">« SingleLayerQG decaying 2D turbulence with and without finite Rossby radius of deformation</a><a class="docs-footer-nextpage" href="../multilayerqg_2layer/">Phillips model of Baroclinic Instability »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option><option value="auto">Automatic (OS)</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.2.1 on <span class="colophon-date" title="Monday 11 December 2023 10:00">Monday 11 December 2023</span>. Using Julia version 1.9.4.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
